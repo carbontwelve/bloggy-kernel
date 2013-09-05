@@ -1,4 +1,4 @@
-<?php namespace Carbontwelve\Bloggy\Models\Taxonomies\Eloquent;
+<?php namespace Carbontwelve\Bloggy\Models\Classification\Taxonomies\Eloquent;
 /**
  * --------------------------------------------------------------------------
  * Bloggy Taxonomy Eloquent Model
@@ -7,17 +7,17 @@
  * @extends \Eloquent
  * @package  Carbontwelve\Bloggy
  * @category Model
- * @version  0.0.1
+ * @since    0.0.2
  * @author   Simon Dann <simon@photogabble.co.uk>
  */
 
-use Carbontwelve\Bloggy\Models\Taxonomies\TaxonomyInterface;
+use Carbontwelve\Bloggy\Models\Classification\Taxonomies\TaxonomyInterface;
 use Illuminate\Database\Eloquent\Model;
 
 class Taxonomy extends Model implements TaxonomyInterface {
 
     protected $guarded = array();
-    protected $table = 'taxonomies';
+    protected $table = 'termtaxonomy';
     public static $rules = array();
 
     /**
@@ -83,5 +83,19 @@ class Taxonomy extends Model implements TaxonomyInterface {
     public function validate()
     {
         return true;
+    }
+
+    /**
+     * --------------------------------------------------------------------------
+     * Taxonomy BelongsTo Term
+     * --------------------------------------------------------------------------
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function term()
+    {
+        // @todo: make $termModel a configurable variable
+        $termModel = '\Carbontwelve\Bloggy\Models\Classification\Terms\Eloquent\Term';
+        return $this->belongsTo($termModel, 'term_id');
     }
 }

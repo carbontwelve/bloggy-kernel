@@ -1,4 +1,4 @@
-<?php namespace Carbontwelve\Bloggy\Models\Taxonomies;
+<?php namespace Carbontwelve\Bloggy\Models\Classification\Taxonomies;
 
 interface TaxonomyInterface {
 

@@ -1,17 +1,14 @@
-<?php namespace Carbontwelve\Bloggy;
+<?php namespace Carbontwelve\Bloggy\Models\Classification\Terms\Eloquent;
 /**
  * --------------------------------------------------------------------------
- * Content Provider Factory
+ * Bloggy Term Exceptions
  * --------------------------------------------------------------------------
  *
  * @package  Carbontwelve\Bloggy
- * @category Factory
- * @since    0.0.1
+ * @category Exceptions
+ * @since    0.0.2
  * @author   Simon Dann <simon@photogabble.co.uk>
  */
-class Content
-{
 
-
-
-}
+class TermNotFoundException extends \Exception {};
+class TermExistsException extends \Exception {};

@@ -1,4 +1,4 @@
-<?php namespace Carbontwelve\Bloggy\Models\Taxonomies\Eloquent;
+<?php namespace Carbontwelve\Bloggy\Models\Classification\Taxonomies\Eloquent;
 /**
  * --------------------------------------------------------------------------
  * Bloggy Taxonomy Eloquent Provider
@@ -9,27 +9,26 @@
  *
  * @package  Carbontwelve\Bloggy
  * @category Model
- * @version  0.0.1
+ * @since    0.0.2
  * @author   Simon Dann <simon@photogabble.co.uk>
  */
 
-use Halesway\FodderContent\Models\Classification\Taxonomies\ProviderInterface;
+use Carbontwelve\Bloggy\Models\Classification\Taxonomies\ProviderInterface;
 
 class TaxonomyProvider implements ProviderInterface {
 
     /**
-     * The Eloquent Board model.
+     * The Default Eloquent Model.
      *
      * @var string
      */
-    protected $model = '\Carbontwelve\Bloggy\Models\Taxonomies\Eloquent\Taxonomy';
+    protected $model = '\Carbontwelve\Bloggy\Models\Classification\Taxonomies\Eloquent\Taxonomy';
 
 
     /**
      * Create a new Eloquent Model provider.
      *
      * @param null|string $model
-     *
      */
     public function __construct($model = null)
     {
@@ -39,6 +38,12 @@ class TaxonomyProvider implements ProviderInterface {
         }
     }
 
+    /**
+     * Creates a new record and fills it with data based upon the models $guarded parameter.
+     *
+     * @param array $attributes
+     * @return array|\Illuminate\Database\Eloquent\Model
+     */
     public function create(array $attributes)
     {
         $board = $this->createModel();
@@ -47,6 +52,11 @@ class TaxonomyProvider implements ProviderInterface {
         return $board;
     }
 
+    /**
+     * Find the taxonomies by ID.
+     *
+     * @param  int  $id
+     */
     public function findByID($id = null)
     {
         $model = $this->createModel();
@@ -57,6 +67,11 @@ class TaxonomyProvider implements ProviderInterface {
         return $board;
     }
 
+    /**
+     * Returns all taxonomies.
+     *
+     * @return array $taxonomies
+     */
     public function findAll()
     {
         $model = $this->createModel();
@@ -84,6 +99,16 @@ class TaxonomyProvider implements ProviderInterface {
     public function setModel($model)
     {
         $this->model = $model;
+    }
+
+    /**
+     * Returns the current set model class name
+     *
+     * @return string
+     */
+    public function getModel()
+    {
+        return $this->model;
     }
 
 }

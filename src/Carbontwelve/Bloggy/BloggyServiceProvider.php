@@ -6,12 +6,12 @@
  *
  * @package  Carbontwelve\Bloggy
  * @category ServiceProvider
- * @version  0.0.1
+ * @since    0.0.1
  * @author   Simon Dann <simon@photogabble.co.uk>
  */
 
 use Illuminate\Support\ServiceProvider;
-use Carbontwelve\Bloggy\Models\Taxonomies\Eloquent\TaxonomyProvider as ClassificationTaxonomyProvider;
+use Carbontwelve\Bloggy\Models\Classification\Taxonomies\Eloquent\TaxonomyProvider as ClassificationTaxonomyProvider;
 
 class BloggyServiceProvider extends ServiceProvider {
 
