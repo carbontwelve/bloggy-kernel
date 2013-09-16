@@ -15,6 +15,10 @@
 
 use Carbontwelve\Bloggy\Models\Classification\TaxonomicUnits\ProviderInterface;
 
+/**
+ * Class TaxonomicUnitProvider
+ * @package Carbontwelve\Bloggy\Models\Classification\TaxonomicUnits\Eloquent
+ */
 class TaxonomicUnitProvider implements ProviderInterface {
 
     /**
@@ -55,7 +59,9 @@ class TaxonomicUnitProvider implements ProviderInterface {
     /**
      * Find the records by ID.
      *
+     * @throws TaxonomicUnitNotFoundException
      * @param  int  $id
+     * @return string
      */
     public function findByID($id = null)
     {

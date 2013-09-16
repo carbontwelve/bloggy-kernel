@@ -11,5 +11,13 @@
  */
 
 class TaxonsNotFoundException extends \Exception {};
+/**
+ * Class TaxonsExistsException
+ * @package Carbontwelve\Bloggy\Models\Classification\Taxons\Eloquent
+ */
 class TaxonsExistsException extends \Exception {};
+/**
+ * Class TaxonsNotValidException
+ * @package Carbontwelve\Bloggy\Models\Classification\Taxons\Eloquent
+ */
 class TaxonsNotValidException extends \Exception {};

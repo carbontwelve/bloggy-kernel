@@ -16,6 +16,10 @@ use Illuminate\Database\Eloquent\Model;
 use Validator;
 use Input;
 
+/**
+ * Class Taxons
+ * @package Carbontwelve\Bloggy\Models\Classification\Taxons\Eloquent
+ */
 class Taxons extends Model implements TaxonsInterface {
 
     /**
@@ -103,7 +107,7 @@ class Taxons extends Model implements TaxonsInterface {
      * Just adding some validation here so we can throw exceptions on validation
      * errors.
      *
-     * @param array $options
+     * @param array $attributes
      * @return bool
      */
     public function update(array $attributes = array())

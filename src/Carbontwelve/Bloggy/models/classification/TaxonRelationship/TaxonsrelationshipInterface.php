@@ -31,14 +31,14 @@ interface TaxonRelationshipInterface {
      * @param array $options
      * @return bool
      */
-    public function save();
+    public function save( array $options = array() );
 
     /**
      * --------------------------------------------------------------------------
      * Overloading of Update method
      * --------------------------------------------------------------------------
      *
-     * @param array $options
+     * @param array $attributes
      * @return bool
      */
     public function update( array $attributes = array() );

@@ -16,6 +16,10 @@ use Illuminate\Database\Eloquent\Model;
 use Validator;
 use Input;
 
+/**
+ * Class TaxonRelationship
+ * @package Carbontwelve\Bloggy\Models\Classification\TaxonRelationship\Eloquent
+ */
 class TaxonRelationship extends Model implements TaxonRelationshipInterface {
 
     /**
@@ -103,7 +107,7 @@ class TaxonRelationship extends Model implements TaxonRelationshipInterface {
      * Just adding some validation here so we can throw exceptions on validation
      * errors.
      *
-     * @param array $options
+     * @param array $attributes
      * @return bool
      */
     public function update(array $attributes = array())

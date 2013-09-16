@@ -10,6 +10,7 @@
 * @author   Simon Dann <simon@photogabble.co.uk>
 */
 
+/** @noinspection PhpDocSignatureInspection */
 interface TaxonsInterface {
 
     /**
@@ -28,7 +29,7 @@ interface TaxonsInterface {
      * Overloading of Save method
      * --------------------------------------------------------------------------
      *
-     * @param array $options
+     * @internal param array $options
      * @return bool
      */
     public function save();
@@ -38,7 +39,8 @@ interface TaxonsInterface {
      * Overloading of Update method
      * --------------------------------------------------------------------------
      *
-     * @param array $options
+     * @param array $attributes
+     * @internal param array $options
      * @return bool
      */
     public function update( array $attributes = array() );

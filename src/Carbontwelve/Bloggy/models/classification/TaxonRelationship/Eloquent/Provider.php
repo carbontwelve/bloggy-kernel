@@ -12,6 +12,10 @@
 
 use Carbontwelve\Bloggy\Models\Classification\TaxonRelationship\ProviderInterface;
 
+/**
+ * Class TaxonRelationshipProvider
+ * @package Carbontwelve\Bloggy\Models\Classification\TaxonRelationship\Eloquent
+ */
 class TaxonRelationshipProvider implements ProviderInterface {
 
     /**
@@ -52,7 +56,9 @@ class TaxonRelationshipProvider implements ProviderInterface {
     /**
      * Find the records by ID.
      *
+     * @throws TaxonRelationshipNotFoundException
      * @param  int  $id
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null|static
      */
     public function findByID($id = null)
     {

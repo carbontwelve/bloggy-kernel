@@ -16,10 +16,14 @@ use Illuminate\Database\Eloquent\Model;
 use Validator;
 use Input;
 
+/**
+ * Class TaxonomicUnit
+ * @package Carbontwelve\Bloggy\Models\Classification\TaxonomicUnits\Eloquent
+ */
 class TaxonomicUnit extends Model implements TaxonomicUnitInterface {
 
     /**
-     * The attributes that aren't mass assignable.
+     * The attributes that are not mass assignable.
      *
      * @var array
      */
@@ -111,7 +115,7 @@ class TaxonomicUnit extends Model implements TaxonomicUnitInterface {
      * Just adding some validation here so we can throw exceptions on validation
      * errors.
      *
-     * @param array $options
+     * @param array $attributes
      * @return bool
      */
     public function update(array $attributes = array())

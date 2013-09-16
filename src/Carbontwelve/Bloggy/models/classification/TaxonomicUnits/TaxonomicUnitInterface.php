@@ -1,5 +1,9 @@
 <?php namespace Carbontwelve\Bloggy\Models\Classification\TaxonomicUnits;
 
+/**
+ * Class TaxonomicUnitInterface
+ * @package Carbontwelve\Bloggy\Models\Classification\TaxonomicUnits
+ */
 interface TaxonomicUnitInterface {
 
     /**
