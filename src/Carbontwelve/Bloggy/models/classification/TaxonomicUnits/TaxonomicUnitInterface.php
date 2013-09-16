@@ -1,23 +1,23 @@
-<?php namespace Carbontwelve\Bloggy\Models\Classification\Taxonomies;
+<?php namespace Carbontwelve\Bloggy\Models\Classification\TaxonomicUnits;
 
-interface TaxonomyInterface {
+interface TaxonomicUnitInterface {
 
     /**
-     * Returns the taxonomies ID.
+     * Returns the records ID.
      *
      * @return mixed
      */
     public function getId();
 
     /**
-     * Save the taxonomies.
+     * Save the records.
      *
      * @return bool
      */
     public function save();
 
     /**
-     * Delete the taxonomies.
+     * Delete the records.
      *
      * @return bool
      */

@@ -1,28 +1,25 @@
-<?php namespace Carbontwelve\Bloggy\Models\Classification\Terms\Eloquent;
+<?php namespace Carbontwelve\Bloggy\Models\Classification\Taxonsrelationship\Eloquent;
 /**
- * --------------------------------------------------------------------------
- * Bloggy Term Eloquent Provider
- * --------------------------------------------------------------------------
- *
- * This is the service provider I have written based upon the provider that
- * is part of Sentry. It seems a good way of writing expendable code no?
- *
- * @package  Carbontwelve\Bloggy
- * @category Model
- * @since    0.0.2
- * @author   Simon Dann <simon@photogabble.co.uk>
- */
+* --------------------------------------------------------------------------
+* Taxonsrelationship Eloquent Provider
+* --------------------------------------------------------------------------
+*
+* @package  Carbontwelve/Bloggy
+* @category ServiceProvider
+* @since    0.0.1
+* @author   Simon Dann <simon@photogabble.co.uk>
+*/
 
-use Carbontwelve\Bloggy\Models\Classification\Terms\ProviderInterface;
+use Carbontwelve\Bloggy\Models\Classification\Taxonsrelationship\ProviderInterface;
 
-class TermProvider implements ProviderInterface {
+class TaxonsrelationshipProvider implements ProviderInterface {
 
     /**
      * The Default Eloquent Model.
      *
      * @var string
      */
-    protected $model = '\Carbontwelve\Bloggy\Models\Classification\Terms\Eloquent\Term';
+    protected $model = 'Carbontwelve\Bloggy\Models\Classification\Taxonsrelationship\Eloquent\Taxonsrelationship';
 
 
     /**
@@ -53,7 +50,7 @@ class TermProvider implements ProviderInterface {
     }
 
     /**
-     * Find the taxonomies by ID.
+     * Find the records by ID.
      *
      * @param  int  $id
      */
@@ -62,15 +59,15 @@ class TermProvider implements ProviderInterface {
         $model = $this->createModel();
         if ( ! $board = $model->newQuery()->find($id))
         {
-            throw new TermNotFoundException("A Term could not be found with ID [$id].");
+            throw new TaxonsrelationshipNotFoundException("A taxonsrelationship could not be found with ID [$id].");
         }
         return $board;
     }
 
     /**
-     * Returns all terms.
+     * Returns all records.
      *
-     * @return array $terms
+     * @return array $records
      */
     public function findAll()
     {

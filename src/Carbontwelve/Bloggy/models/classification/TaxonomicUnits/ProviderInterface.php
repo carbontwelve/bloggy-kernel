@@ -1,18 +1,18 @@
-<?php namespace Carbontwelve\Bloggy\Models\Classification\Terms;
+<?php namespace Carbontwelve\Bloggy\Models\Classification\TaxonomicUnits;
 
 interface ProviderInterface {
 
     /**
-     * Find the terms by ID.
+     * Find the records by ID.
      *
      * @param  int  $id
      */
     public function findById($id);
 
     /**
-     * Returns all terms.
+     * Returns all records.
      *
-     * @return array  $taxonomies
+     * @return array  $records
      */
     public function findAll();
 

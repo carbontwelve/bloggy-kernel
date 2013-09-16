@@ -1,7 +1,7 @@
-<?php namespace Carbontwelve\Bloggy\Models\Classification\Taxonomies\Eloquent;
+<?php namespace Carbontwelve\Bloggy\Models\Classification\TaxonomicUnits\Eloquent;
 /**
  * --------------------------------------------------------------------------
- * Bloggy Taxonomy Eloquent Provider
+ * Bloggy TaxonomicUnit Eloquent Provider
  * --------------------------------------------------------------------------
  *
  * This is the service provider I have written based upon the provider that
@@ -13,16 +13,16 @@
  * @author   Simon Dann <simon@photogabble.co.uk>
  */
 
-use Carbontwelve\Bloggy\Models\Classification\Taxonomies\ProviderInterface;
+use Carbontwelve\Bloggy\Models\Classification\TaxonomicUnits\ProviderInterface;
 
-class TaxonomyProvider implements ProviderInterface {
+class TaxonomicUnitProvider implements ProviderInterface {
 
     /**
      * The Default Eloquent Model.
      *
      * @var string
      */
-    protected $model = '\Carbontwelve\Bloggy\Models\Classification\Taxonomies\Eloquent\Taxonomy';
+    protected $model = '\Carbontwelve\Bloggy\Models\Classification\TaxonomicUnits\Eloquent\TaxonomicUnit';
 
 
     /**
@@ -53,7 +53,7 @@ class TaxonomyProvider implements ProviderInterface {
     }
 
     /**
-     * Find the taxonomies by ID.
+     * Find the records by ID.
      *
      * @param  int  $id
      */
@@ -62,15 +62,15 @@ class TaxonomyProvider implements ProviderInterface {
         $model = $this->createModel();
         if ( ! $board = $model->newQuery()->find($id))
         {
-            throw new TaxonomyNotFoundException("A Board could not be found with ID [$id].");
+            throw new TaxonomicUnitNotFoundException("A Board could not be found with ID [$id].");
         }
         return $board;
     }
 
     /**
-     * Returns all taxonomies.
+     * Returns all records.
      *
-     * @return array $taxonomies
+     * @return array $records
      */
     public function findAll()
     {

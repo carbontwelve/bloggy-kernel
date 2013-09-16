@@ -1,18 +1,28 @@
-<?php namespace Carbontwelve\Bloggy\Models\Classification\Taxonomies;
+<?php namespace Carbontwelve\Bloggy\Models\Classification\Taxons;
+/**
+* --------------------------------------------------------------------------
+* Taxons Provider Interface
+* --------------------------------------------------------------------------
+*
+* @package  Carbontwelve/Bloggy
+* @category Interface
+* @since    0.0.1
+* @author   Simon Dann <simon@photogabble.co.uk>
+*/
 
 interface ProviderInterface {
 
     /**
-     * Find the taxonomies by ID.
+     * Find the records by ID.
      *
      * @param  int  $id
      */
     public function findById($id);
 
     /**
-     * Returns all taxonomies.
+     * Returns all records.
      *
-     * @return array  $taxonomies
+     * @return array  $records
      */
     public function findAll();
 

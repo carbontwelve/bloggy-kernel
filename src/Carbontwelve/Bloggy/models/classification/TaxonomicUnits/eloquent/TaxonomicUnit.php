@@ -1,7 +1,7 @@
-<?php namespace Carbontwelve\Bloggy\Models\Classification\Taxonomies\Eloquent;
+<?php namespace Carbontwelve\Bloggy\Models\Classification\TaxonomicUnits\Eloquent;
 /**
  * --------------------------------------------------------------------------
- * Bloggy Taxonomy Eloquent Model
+ * Bloggy TaxonomicUnit Eloquent Model
  * --------------------------------------------------------------------------
  *
  * @extends \Eloquent
@@ -11,14 +11,38 @@
  * @author   Simon Dann <simon@photogabble.co.uk>
  */
 
-use Carbontwelve\Bloggy\Models\Classification\Taxonomies\TaxonomyInterface;
+use Carbontwelve\Bloggy\Models\Classification\TaxonomicUnits\TaxonomicUnitInterface;
 use Illuminate\Database\Eloquent\Model;
+use Validator;
+use Input;
 
-class Taxonomy extends Model implements TaxonomyInterface {
+class TaxonomicUnit extends Model implements TaxonomicUnitInterface {
 
-    protected $guarded = array();
-    protected $table = 'termtaxonomy';
-    public static $rules = array();
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = array(
+        'id',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    );
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'taxonomic_units';
+
+    /**
+     * The number of models to return for pagination.
+     *
+     * @var int
+     */
+    protected $perPage = 20;
 
     /**
      * Indicates if the model should soft delete.
@@ -26,6 +50,27 @@ class Taxonomy extends Model implements TaxonomyInterface {
      * @var bool
      */
     protected $softDelete = true;
+
+    /**
+     * The default rules for this model to validate
+     *
+     * @var array
+     */
+    public static $rules = array(
+
+        'save' => array(
+            'name' => array(
+                'min:3'
+            )
+        ),
+        'update' => array(
+            'name' => array(
+                'min:3'
+            )
+        ),
+        'delete' => array()
+
+    );
 
     /**
      * --------------------------------------------------------------------------
@@ -54,8 +99,25 @@ class Taxonomy extends Model implements TaxonomyInterface {
      */
     public function save(array $options = array())
     {
-        $this->validate();
+        $this->validate('save');
         return parent::save();
+    }
+
+    /**
+     * --------------------------------------------------------------------------
+     * Overloading of Update method
+     * --------------------------------------------------------------------------
+     *
+     * Just adding some validation here so we can throw exceptions on validation
+     * errors.
+     *
+     * @param array $options
+     * @return bool
+     */
+    public function update(array $attributes = array())
+    {
+        $this->validate('update');
+        return parent::update();
     }
 
     /**
@@ -76,18 +138,30 @@ class Taxonomy extends Model implements TaxonomyInterface {
 
     /**
      * --------------------------------------------------------------------------
-     * Taxonomy Data Validation before Save
+     * Data Validation
      * --------------------------------------------------------------------------
+     *
+     * @param $rule
      * @return bool
+     * @throws TaxonomicUnitNotValidException
      */
-    public function validate()
+    public function validate($rule)
     {
+        // If there are no validation rules then no point in continuing
+        if (count(self::$rules[$rule]) == 0){ return true; }
+
+        $validator = Validator::make( Input::all(), self::$rules[$rule] );
+
+        if ( ! $validator->passes() ){
+            throw new TaxonomicUnitNotValidException( $validator->errors() );
+        }
+
         return true;
     }
 
     /**
      * --------------------------------------------------------------------------
-     * Taxonomy BelongsTo Term
+     * TaxonomicUnit BelongsTo Term
      * --------------------------------------------------------------------------
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
