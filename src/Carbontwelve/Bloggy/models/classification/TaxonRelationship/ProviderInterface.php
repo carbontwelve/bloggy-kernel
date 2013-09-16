@@ -1,7 +1,7 @@
-<?php namespace Carbontwelve\Bloggy\Models\Classification\Taxonsrelationship;
+<?php namespace Carbontwelve\Bloggy\Models\Classification\TaxonRelationship;
 /**
 * --------------------------------------------------------------------------
-* Taxonsrelationship Provider Interface
+* TaxonRelationship Provider Interface
 * --------------------------------------------------------------------------
 *
 * @package  Carbontwelve/Bloggy

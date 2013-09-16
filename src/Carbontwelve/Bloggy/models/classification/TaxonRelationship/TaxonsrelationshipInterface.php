@@ -1,7 +1,7 @@
-<?php namespace Carbontwelve\Bloggy\Models\Classification\Taxonsrelationship;
+<?php namespace Carbontwelve\Bloggy\Models\Classification\TaxonRelationship;
 /**
 * --------------------------------------------------------------------------
-* Taxonsrelationship Interface
+* TaxonRelationship Interface
 * --------------------------------------------------------------------------
 *
 * @package  Carbontwelve/Bloggy
@@ -10,7 +10,7 @@
 * @author   Simon Dann <simon@photogabble.co.uk>
 */
 
-interface TaxonsrelationshipInterface {
+interface TaxonRelationshipInterface {
 
     /**
      * --------------------------------------------------------------------------
@@ -59,7 +59,7 @@ interface TaxonsrelationshipInterface {
     *
     * @param $rule
     * @return bool
-    * @throws TaxonsrelationshipNotValidException
+    * @throws TaxonRelationshipNotValidException
     */
     public function validate( $rule );
 

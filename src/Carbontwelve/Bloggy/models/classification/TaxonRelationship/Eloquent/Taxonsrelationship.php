@@ -1,7 +1,7 @@
-<?php namespace Carbontwelve\Bloggy\Models\Classification\Taxonsrelationship\Eloquent;
+<?php namespace Carbontwelve\Bloggy\Models\Classification\TaxonRelationship\Eloquent;
 /**
 * --------------------------------------------------------------------------
-* Taxonsrelationship Eloquent Model
+* TaxonRelationship Eloquent Model
 * --------------------------------------------------------------------------
 *
 * @extends  \Illuminate\Database\Eloquent\Model
@@ -11,12 +11,12 @@
 * @author   Simon Dann <simon@photogabble.co.uk>
 */
 
-use Carbontwelve\Bloggy\Models\Classification\Taxonsrelationship\TaxonsrelationshipInterface;
+use Carbontwelve\Bloggy\Models\Classification\TaxonRelationship\TaxonRelationshipInterface;
 use Illuminate\Database\Eloquent\Model;
 use Validator;
 use Input;
 
-class Taxonsrelationship extends Model implements TaxonsrelationshipInterface {
+class TaxonRelationship extends Model implements TaxonRelationshipInterface {
 
     /**
      * The attributes that aren't mass assignable.
@@ -132,7 +132,7 @@ class Taxonsrelationship extends Model implements TaxonsrelationshipInterface {
      *
      * @param $rule
      * @return bool
-     * @throws TaxonsrelationshipNotValidException
+     * @throws TaxonRelationshipNotValidException
      */
     public function validate($rule)
     {
@@ -142,7 +142,7 @@ class Taxonsrelationship extends Model implements TaxonsrelationshipInterface {
         $validator = Validator::make( Input::all(), self::$rules[$rule] );
 
         if ( ! $validator->passes() ){
-            throw new TaxonsrelationshipNotValidException( $validator->errors() );
+            throw new TaxonRelationshipNotValidException( $validator->errors() );
         }
 
         return true;

@@ -1,7 +1,7 @@
-<?php namespace Carbontwelve\Bloggy\Models\Classification\Taxonsrelationship\Eloquent;
+<?php namespace Carbontwelve\Bloggy\Models\Classification\TaxonRelationship\Eloquent;
 /**
 * --------------------------------------------------------------------------
-* Taxonsrelationship Eloquent Provider
+* TaxonRelationship Eloquent Provider
 * --------------------------------------------------------------------------
 *
 * @package  Carbontwelve/Bloggy
@@ -10,16 +10,16 @@
 * @author   Simon Dann <simon@photogabble.co.uk>
 */
 
-use Carbontwelve\Bloggy\Models\Classification\Taxonsrelationship\ProviderInterface;
+use Carbontwelve\Bloggy\Models\Classification\TaxonRelationship\ProviderInterface;
 
-class TaxonsrelationshipProvider implements ProviderInterface {
+class TaxonRelationshipProvider implements ProviderInterface {
 
     /**
      * The Default Eloquent Model.
      *
      * @var string
      */
-    protected $model = 'Carbontwelve\Bloggy\Models\Classification\Taxonsrelationship\Eloquent\Taxonsrelationship';
+    protected $model = 'Carbontwelve\Bloggy\Models\Classification\TaxonRelationship\Eloquent\TaxonRelationship';
 
 
     /**
@@ -59,7 +59,7 @@ class TaxonsrelationshipProvider implements ProviderInterface {
         $model = $this->createModel();
         if ( ! $board = $model->newQuery()->find($id))
         {
-            throw new TaxonsrelationshipNotFoundException("A taxonsrelationship could not be found with ID [$id].");
+            throw new TaxonRelationshipNotFoundException("A TaxonRelationship could not be found with ID [$id].");
         }
         return $board;
     }
