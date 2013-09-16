@@ -108,7 +108,7 @@ class Classification{
      * @param TaxonProviderInterface $taxonProvider
      * @return void
      */
-    public function setTaxonProvider(TaxonomicUnitsProviderInterface $taxonProvider)
+    public function setTaxonProvider(TaxonProviderInterface $taxonProvider)
     {
         $this->taxonProvider = $taxonProvider;
     }
