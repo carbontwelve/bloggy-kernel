@@ -49,7 +49,7 @@ class CreateContentTable extends Migration {
                 // Main Data
 
                 $table->text('title');
-                $table->text('slug');
+                $table->string('slug', 250);
                 $table->longText('content');
                 $table->text('excerpt');
                 $table->enum('kind', array(
