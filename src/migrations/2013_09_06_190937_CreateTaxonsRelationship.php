@@ -1,4 +1,7 @@
 <?php
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
 /**
  * --------------------------------------------------------------------------
  * `taxons_relationship` table migration
@@ -8,15 +11,10 @@
  * system: http://stackoverflow.com/a/4241084/1225977
  *
  * @package  Carbontwelve\Bloggy
- * @category Exceptions
+ * @category Migration
  * @since    0.0.2
  * @author   Simon Dann <simon@photogabble.co.uk>
  */
-
-
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-
 class CreateTaxonsRelationship extends Migration {
 
 	/**
