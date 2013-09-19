@@ -12,4 +12,12 @@
 class TaxonomicUnitAdminController extends BloggyAdminBaseController
 {
 
+    public function index()
+    {
+        //return View::make('Bloggy::backend.taxonomy.units.index');
+
+        return $this->adminView( 'taxonomy.units.index', array());
+
+    }
+
 }
