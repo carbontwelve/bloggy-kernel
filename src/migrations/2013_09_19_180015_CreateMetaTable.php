@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 /**
  * --------------------------------------------------------------------------
- * `network` table migration
+ * `meta` table migration
  * --------------------------------------------------------------------------
  *
  * @package  Carbontwelve\Bloggy
@@ -13,7 +13,7 @@ use Illuminate\Database\Schema\Blueprint;
  * @since    0.0.2
  * @author   Simon Dann <simon@photogabble.co.uk>
  */
-class CreateNetworkTable extends Migration {
+class CreateMetaTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -23,33 +23,26 @@ class CreateNetworkTable extends Migration {
 	public function up()
 	{
         Schema::create(
-            'network',
+            'meta',
             function (Blueprint $table) {
                 // Key + Meta Data
                 $table->increments('id')
                     ->unsigned();
-                $table->timestamps();
-                $table->softDeletes();
 
                 // Relationship Data
-                $table->integer('created_user_id')
+                $table->integer('metable_id')
                     ->unsigned()
                     ->default(0);
-                $table->integer('updated_user_id')
-                    ->unsigned()
-                    ->default(0);
-                $table->integer('deleted_user_id')
-                    ->unsigned()
-                    ->default(0);
+                $table->string('metable_type', 255);
 
                 // Main Data
-                $table->string('name', 20);
-                $table->string('domain', 250);
-                $table->boolean('active')
-                    ->default(false);
+                $table->string('meta_key', 200);
+                $table->text('meta_value');
 
                 // Indexes
-                $table->index('domain');
+                $table->index('metable_id');
+                $table->index('metable_type');
+                $table->index('meta_key');
 
             }
         );
@@ -62,7 +55,7 @@ class CreateNetworkTable extends Migration {
 	 */
 	public function down()
 	{
-        Schema::dropIfExists('network');
+        Schema::dropIfExists('meta');
 	}
 
 }
