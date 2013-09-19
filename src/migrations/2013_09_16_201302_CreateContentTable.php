@@ -36,6 +36,9 @@ class CreateContentTable extends Migration {
                 $table->integer('parent_id')
                     ->unsigned()
                     ->default(0);
+                $table->integer('network_id')
+                    ->unsigned()
+                    ->default(0);
                 $table->integer('created_user_id')
                     ->unsigned()
                     ->default(0);
@@ -82,6 +85,7 @@ class CreateContentTable extends Migration {
 
                 // Indexes
                 $table->index('parent_id');
+                $table->index('network_id');
                 $table->index('slug');
                 $table->index('kind');
                 $table->index('status');
