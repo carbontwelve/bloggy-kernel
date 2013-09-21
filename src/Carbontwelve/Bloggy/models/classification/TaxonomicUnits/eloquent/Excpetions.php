@@ -20,4 +20,25 @@ class TaxonomicUnitExistsException extends \Exception {};
  * Class TaxonomicUnitNotValidException
  * @package Carbontwelve\Bloggy\Models\Classification\TaxonomicUnits\Eloquent
  */
-class TaxonomicUnitNotValidException extends \Exception {};
+class TaxonomicUnitNotValidException extends \Exception {
+
+    private $validationErrors;
+
+    /**
+     * @param $errors
+     * @return void
+     */
+    public function setValidationErrors ( \Illuminate\Support\MessageBag $errors )
+    {
+        $this->validationErrors = $errors;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValidationErrors ()
+    {
+        return $this->validationErrors;
+    }
+
+};

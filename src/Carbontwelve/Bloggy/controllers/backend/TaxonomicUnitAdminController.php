@@ -1,5 +1,10 @@
 <?php namespace Carbontwelve\Bloggy\Controllers\Backend;
 
+use Carbontwelve\Bloggy\Facades\Classification;
+use Carbontwelve\Bloggy\Models\Classification\TaxonomicUnits\Eloquent\TaxonomicUnitNotValidException;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 /**
  * Class TaxonomicUnitAdminController
@@ -28,8 +33,75 @@ class TaxonomicUnitAdminController extends BloggyAdminBaseController
 
     public function index()
     {
-        return $this->adminView( 'taxonomy.units.index', array());
+        $taxonomyUnits = Classification::getTaxonomicUnitsProvider()
+            ->findAll();
 
+        return $this->adminView( 'taxonomy.units.index', array(
+                'taxonomyUnits' => $taxonomyUnits
+            ));
+    }
+
+    public function add()
+    {
+        $this->getBreadcrumbProvider()->addBreadcrumb(
+            array( 'href' => route('administration.taxonomy.units.add'), 'text' => 'Create New Record' )
+        );
+
+        return $this->adminView( 'taxonomy.units.create', array());
+    }
+
+    public function create()
+    {
+        $taxonomyUnitProvider = Classification::getTaxonomicUnitsProvider();
+
+        try{
+            $taxonomyUnit = $taxonomyUnitProvider->create(
+                Input::except('_token')
+            );
+        }
+        catch( TaxonomicUnitNotValidException $errorMessage)
+        {
+            Session::flash('error', $errorMessage->getMessage() );
+            return Redirect::back()
+                ->withErrors( $errorMessage->getValidationErrors() )
+                ->withInput(Input::except('_token'));
+        }
+
+        Session::flash('success','That TaxonomyUnit record was successfully created.');
+        return Redirect::route( 'administration.taxonomy.units.edit', array( 'id' =>$taxonomyUnit->id ) );
+    }
+
+    public function edit( $id = null )
+    {
+        $this->getBreadcrumbProvider()->addBreadcrumb(
+            array( 'href' => route('administration.taxonomy.units.add'), 'text' => 'Create New Record' )
+        );
+
+        $taxonomyUnit = Classification::getTaxonomicUnitsProvider()->findById($id);
+
+        return $this->adminView( 'taxonomy.units.update', array( 'taxonomyUnit' => $taxonomyUnit ));
+    }
+
+    public function update( $id = null )
+    {
+        $taxonomyUnitProvider = Classification::getTaxonomicUnitsProvider();
+
+        try{
+            $taxonomyUnit = $taxonomyUnitProvider->update(
+                $id,
+                Input::except('_token')
+            );
+        }
+        catch( TaxonomicUnitNotValidException $errorMessage)
+        {
+            Session::flash('error', $errorMessage->getMessage() );
+            return Redirect::back()
+                ->withErrors( $errorMessage->getValidationErrors() )
+                ->withInput(Input::except('_token'));
+        }
+
+        Session::flash('success','That TaxonomyUnit record was successfully updated.');
+        return Redirect::route( 'administration.taxonomy.units.edit', array( 'id' =>$taxonomyUnit->id ) );
     }
 
 }

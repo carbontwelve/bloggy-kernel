@@ -1,18 +1,18 @@
 <?php namespace Carbontwelve\Bloggy;
+
+use Illuminate\Support\ServiceProvider;
+use Carbontwelve\Bloggy\Models\Classification\TaxonomicUnits\Eloquent\TaxonomicUnitProvider as ClassificationTaxonomicUnitProvider;
+use Carbontwelve\Bloggy\Models\Classification\Taxons\Eloquent\TaxonsProvider as ClassificationTaxonsProvider;
+use Carbontwelve\Bloggy\Models\Classification\TaxonRelationship\Eloquent\TaxonRelationshipProvider as ClassificationTaxonRelationshipProvider;
+
 /**
- * --------------------------------------------------------------------------
- * BloggyServiceProvider
- * --------------------------------------------------------------------------
+ * Class BloggyServiceProvider
  *
- * @package  Carbontwelve\Bloggy
+ * @package Carbontwelve\Bloggy
  * @category ServiceProvider
  * @since    0.0.1
  * @author   Simon Dann <simon@photogabble.co.uk>
  */
-
-use Illuminate\Support\ServiceProvider;
-use Carbontwelve\Bloggy\Models\Classification\Taxonomies\Eloquent\TaxonomyProvider as ClassificationTaxonomyProvider;
-
 class BloggyServiceProvider extends ServiceProvider {
 
 	/**
@@ -47,7 +47,9 @@ class BloggyServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->registerClassificationTaxonomyProvider();
+        $this->registerClassificationTaxonomicUnitProvider();
+        $this->registerClassificationTaxonProvider();
+		$this->registerClassificationTaxonRelationshipProvider();
         $this->registerClassification();
 	}
 
@@ -65,18 +67,50 @@ class BloggyServiceProvider extends ServiceProvider {
 
     /**
      * --------------------------------------------------------------------------
-     * Register Taxonomy Provider Facade
+     * Register TaxonomicUnit Provider Facade
      * --------------------------------------------------------------------------
      * @return void
      * @protected
      */
-    protected function registerClassificationTaxonomyProvider()
+    protected function registerClassificationTaxonomicUnitProvider()
     {
-        $this->app['classification.taxonomy'] = $this->app->share(function($app)
-        {
-            $model = null; //$app['config']['bloggy::classification.models.taxonomy'];
-            return new ClassificationTaxonomyProvider($model);
-        });
+        $this->app['classification.taxonomicUnit'] = $this->app->share(function($app)
+            {
+                $model = null; //$app['config']['bloggy::classification.models.taxonomy'];
+                return new ClassificationTaxonomicUnitProvider($model);
+            });
+    }
+
+    /**
+     * --------------------------------------------------------------------------
+     * Register Taxon Provider Facade
+     * --------------------------------------------------------------------------
+     * @return void
+     * @protected
+     */
+    protected function registerClassificationTaxonProvider()
+    {
+        $this->app['classification.taxon'] = $this->app->share(function($app)
+            {
+                $model = null; //$app['config']['bloggy::classification.models.taxonomy'];
+                return new ClassificationTaxonsProvider($model);
+            });
+    }
+
+    /**
+     * --------------------------------------------------------------------------
+     * Register Taxon Relationship Provider Facade
+     * --------------------------------------------------------------------------
+     * @return void
+     * @protected
+     */
+    protected function registerClassificationTaxonRelationshipProvider()
+    {
+        $this->app['classification.taxonRelationship'] = $this->app->share(function($app)
+            {
+                $model = null; //$app['config']['bloggy::classification.models.taxonomy'];
+                return new ClassificationTaxonRelationshipProvider($model);
+            });
     }
 
     /**
@@ -92,7 +126,9 @@ class BloggyServiceProvider extends ServiceProvider {
         {
             $app['classification.loaded'] = true;
             return new \Carbontwelve\Bloggy\Classification(
-                $app['classification.taxonomy']
+                $app['classification.taxonomicUnit'],
+                $app['classification.taxonRelationship'],
+                $app['classification.taxon']
             );
         });
     }

@@ -64,11 +64,13 @@ class TaxonomicUnit extends Model implements TaxonomicUnitInterface {
 
         'save' => array(
             'name' => array(
+                'required',
                 'min:3'
             )
         ),
         'update' => array(
             'name' => array(
+                'required',
                 'min:3'
             )
         ),
@@ -157,7 +159,10 @@ class TaxonomicUnit extends Model implements TaxonomicUnitInterface {
         $validator = Validator::make( Input::all(), self::$rules[$rule] );
 
         if ( ! $validator->passes() ){
-            throw new TaxonomicUnitNotValidException( $validator->errors() );
+
+            $validationError = new TaxonomicUnitNotValidException( 'That input is not valid.' );
+            $validationError->setValidationErrors( $validator->errors() );
+            throw $validationError;
         }
 
         return true;

@@ -39,7 +39,7 @@ class Taxons extends Model implements TaxonsInterface {
      *
      * @var string
      */
-    protected $table = 'wp_commentmeta';
+    protected $table = 'taxons';
 
     /**
      * The number of models to return for pagination.

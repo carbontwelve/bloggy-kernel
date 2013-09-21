@@ -50,10 +50,23 @@ class TaxonomicUnitProvider implements ProviderInterface {
      */
     public function create(array $attributes)
     {
-        $board = $this->createModel();
-        $board->fill($attributes);
-        $board->save();
-        return $board;
+        $model = $this->createModel();
+        $model->fill($attributes);
+        $model->save();
+        return $model;
+    }
+
+    /**
+     * @param null $id
+     * @param array $attributes
+     * @return array|\Illuminate\Database\Eloquent\Model
+     */
+    public function update($id = null, array $attributes)
+    {
+        $model = $this->findByID($id);
+        $model->fill($attributes);
+        $model->save();
+        return $model;
     }
 
     /**
