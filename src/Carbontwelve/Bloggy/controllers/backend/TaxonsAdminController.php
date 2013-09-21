@@ -12,4 +12,11 @@
 class TaxonsAdminController extends BloggyAdminBaseController
 {
 
+    public function index()
+    {
+
+        return $this->adminView( 'taxonomy.taxons.index', array());
+
+    }
+
 }

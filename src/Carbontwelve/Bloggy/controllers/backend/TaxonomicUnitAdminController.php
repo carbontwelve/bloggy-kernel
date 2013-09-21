@@ -14,7 +14,9 @@ class TaxonomicUnitAdminController extends BloggyAdminBaseController
 
     public function index()
     {
-        //return View::make('Bloggy::backend.taxonomy.units.index');
+        $this->getBreadcrumbProvider()->setBreadcrumbs(
+            array( 'href' => '#', 'route' => 'administration.taxonomy.units.index', 'text' => 'Taxonomy Units' )
+        );
 
         return $this->adminView( 'taxonomy.units.index', array());
 
