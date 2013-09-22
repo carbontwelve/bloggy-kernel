@@ -47,7 +47,12 @@ class TaxonsAdminController extends BloggyAdminBaseController
             array( 'href' => route('administration.taxonomy.taxons.add'), 'text' => 'Create New Record' )
         );
 
-        return $this->adminView( 'taxonomy.taxons.create', array());
+        return $this->adminView( 'taxonomy.taxons.create', array(
+                'taxons' => Classification::getTaxonProvider()
+                    ->findAll(),
+                'taxonomyUnits' => Classification::getTaxonomicUnitsProvider()
+                    ->findAll()
+            ));
     }
 
     public function create()
