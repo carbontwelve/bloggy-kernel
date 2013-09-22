@@ -58,8 +58,8 @@ Create New Record &ndash; Taxonomy Taxons
         <label for="taxonomic_unit_id">Parent</label>
         <select class="form-control" id="parent_id" name="parent_id">
             <option value="0">None</option>
-            @foreach($taxonomyUnits as $taxonomyUnit)
-            <option value="{{ $taxonomyUnit->id }}">{{ $taxonomyUnit->name }}</option>
+            @foreach($taxons as $taxon)
+            <option value="{{ $taxon->id }}">{{ $taxon->name }}</option>
             @endforeach
         </select>
         @if ($errors->has('parent_id') )
