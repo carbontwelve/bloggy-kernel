@@ -42,6 +42,31 @@ Create New Record &ndash; Taxonomy Taxons
         @endif
     </div>
 
+    <div class="form-group<?php if( $errors->has('taxonomic_unit_id') ){ ?> has-error<?php } ?>">
+        <label for="taxonomic_unit_id">Unit</label>
+        <select class="form-control" id="taxonomic_unit_id" name="taxonomic_unit_id">
+            @foreach($taxonomyUnits as $taxonomyUnit)
+            <option value="{{ $taxonomyUnit->id }}">{{ $taxonomyUnit->name }}</option>
+            @endforeach
+        </select>
+        @if ($errors->has('taxonomic_unit_id') )
+        <span class="help-block text-danger">{{ $errors->first('taxonomic_unit_id') }}</span>
+        @endif
+    </div>
+
+    <div class="form-group<?php if( $errors->has('parent_id') ){ ?> has-error<?php } ?>">
+        <label for="taxonomic_unit_id">Parent</label>
+        <select class="form-control" id="parent_id" name="parent_id">
+            <option value="0">None</option>
+            @foreach($taxonomyUnits as $taxonomyUnit)
+            <option value="{{ $taxonomyUnit->id }}">{{ $taxonomyUnit->name }}</option>
+            @endforeach
+        </select>
+        @if ($errors->has('parent_id') )
+        <span class="help-block text-danger">{{ $errors->first('parent_id') }}</span>
+        @endif
+    </div>
+
     <div class="form-group pull-right">
         <a class="btn btn-small btn-link" href="{{ route('administration.taxonomy.taxons.index') }}">
             Cancel
