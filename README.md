@@ -1,6 +1,8 @@
 Carbontwelve/Bloggy
 ======
 
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/carbontwelve/bloggy/badges/quality-score.png?s=0acfdc9c74c52b9cedf08b38a6705d87f4699048)](https://scrutinizer-ci.com/g/carbontwelve/bloggy/)
+
 Bloggy package for laravel 4
 
 == Features ==
