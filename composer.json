@@ -1,10 +1,10 @@
 {
-    "name": "carbontwelve/bloggy",
+    "name": "carbontwelve/bloggy-kernel",
     "description": "",
     "authors": [
         {
             "name": "Simon Dann",
-            "email": "simon.dann@halesway.co.uk"
+            "email": "simon.dann@gmail.com"
         }
     ],
     "require": {
