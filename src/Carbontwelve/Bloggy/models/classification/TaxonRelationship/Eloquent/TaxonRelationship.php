@@ -84,6 +84,20 @@ class TaxonRelationship extends Model implements TaxonRelationshipInterface {
 
     /**
      * --------------------------------------------------------------------------
+     * Returns the fully qualified namespace name for this model class.
+     * --------------------------------------------------------------------------
+     *
+     * Quickly get the current class name
+     *
+     * @return string
+     */
+    public function getNamespacedName()
+    {
+        return get_class();
+    }
+
+    /**
+     * --------------------------------------------------------------------------
      * Overloading of Save method
      * --------------------------------------------------------------------------
      *
