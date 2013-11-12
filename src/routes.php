@@ -38,12 +38,12 @@ Route::group(
                     array('prefix' => 'units'),
                     function () {
 
-                        Route::get('/', array('as' => 'administration.taxonomy.units.index', 'uses' => 'Carbontwelve\Bloggy\Controllers\Backend\TaxonomicUnitAdminController@index'));
-                        Route::get('/add', array('as' => 'administration.taxonomy.units.add', 'uses' => 'Carbontwelve\Bloggy\Controllers\Backend\TaxonomicUnitAdminController@add'));
-                        Route::post('/create', array('as' => 'administration.taxonomy.units.create', 'uses' => 'Carbontwelve\Bloggy\Controllers\Backend\TaxonomicUnitAdminController@create'));
-                        Route::get('/{id}/edit', array('as' => 'administration.taxonomy.units.edit', 'uses' => 'Carbontwelve\Bloggy\Controllers\Backend\TaxonomicUnitAdminController@edit'));
-                        Route::post('/{id}/edit', array('as' => 'administration.taxonomy.units.update', 'uses' => 'Carbontwelve\Bloggy\Controllers\Backend\TaxonomicUnitAdminController@update'));
-                        Route::post('/{id}/destroy', array('as' => 'administration.taxonomy.units.destroy', 'uses' => 'Carbontwelve\Bloggy\Controllers\Backend\TaxonomicUnitAdminController@destroy'));
+                        Route::get('/', array('as' => 'administration.taxonomy.units.index', 'uses' => 'Carbontwelve\BloggyKernel\Controllers\Backend\TaxonomicUnitAdminController@index'));
+                        Route::get('/add', array('as' => 'administration.taxonomy.units.add', 'uses' => 'Carbontwelve\BloggyKernel\Controllers\Backend\TaxonomicUnitAdminController@add'));
+                        Route::post('/create', array('as' => 'administration.taxonomy.units.create', 'uses' => 'Carbontwelve\BloggyKernel\Controllers\Backend\TaxonomicUnitAdminController@create'));
+                        Route::get('/{id}/edit', array('as' => 'administration.taxonomy.units.edit', 'uses' => 'Carbontwelve\BloggyKernel\Controllers\Backend\TaxonomicUnitAdminController@edit'));
+                        Route::post('/{id}/edit', array('as' => 'administration.taxonomy.units.update', 'uses' => 'Carbontwelve\BloggyKernel\Controllers\Backend\TaxonomicUnitAdminController@update'));
+                        Route::post('/{id}/destroy', array('as' => 'administration.taxonomy.units.destroy', 'uses' => 'Carbontwelve\BloggyKernel\Controllers\Backend\TaxonomicUnitAdminController@destroy'));
 
                     }
                 );
@@ -60,12 +60,12 @@ Route::group(
                     array('prefix' => 'taxons'),
                     function () {
 
-                        Route::get('/', array('as' => 'administration.taxonomy.taxons.index', 'uses' => 'Carbontwelve\Bloggy\Controllers\Backend\TaxonsAdminController@index'));
-                        Route::get('/add', array('as' => 'administration.taxonomy.taxons.add', 'uses' => 'Carbontwelve\Bloggy\Controllers\Backend\TaxonsAdminController@add'));
-                        Route::post('/create', array('as' => 'administration.taxonomy.taxons.create', 'uses' => 'Carbontwelve\Bloggy\Controllers\Backend\TaxonsAdminController@create'));
-                        Route::get('/{id}/edit', array('as' => 'administration.taxonomy.taxons.edit', 'uses' => 'Carbontwelve\Bloggy\Controllers\Backend\TaxonsAdminController@edit'));
-                        Route::post('/{id}/edit', array('as' => 'administration.taxonomy.taxons.update', 'uses' => 'Carbontwelve\Bloggy\Controllers\Backend\TaxonsAdminController@update'));
-                        Route::post('/{id}/destroy', array('as' => 'administration.taxonomy.taxons.destroy', 'uses' => 'Carbontwelve\Bloggy\Controllers\Backend\TaxonsAdminController@destroy'));
+                        Route::get('/', array('as' => 'administration.taxonomy.taxons.index', 'uses' => 'Carbontwelve\BloggyKernel\Controllers\Backend\TaxonsAdminController@index'));
+                        Route::get('/add', array('as' => 'administration.taxonomy.taxons.add', 'uses' => 'Carbontwelve\BloggyKernel\Controllers\Backend\TaxonsAdminController@add'));
+                        Route::post('/create', array('as' => 'administration.taxonomy.taxons.create', 'uses' => 'Carbontwelve\BloggyKernel\Controllers\Backend\TaxonsAdminController@create'));
+                        Route::get('/{id}/edit', array('as' => 'administration.taxonomy.taxons.edit', 'uses' => 'Carbontwelve\BloggyKernel\Controllers\Backend\TaxonsAdminController@edit'));
+                        Route::post('/{id}/edit', array('as' => 'administration.taxonomy.taxons.update', 'uses' => 'Carbontwelve\BloggyKernel\Controllers\Backend\TaxonsAdminController@update'));
+                        Route::post('/{id}/destroy', array('as' => 'administration.taxonomy.taxons.destroy', 'uses' => 'Carbontwelve\BloggyKernel\Controllers\Backend\TaxonsAdminController@destroy'));
 
                     }
                 );

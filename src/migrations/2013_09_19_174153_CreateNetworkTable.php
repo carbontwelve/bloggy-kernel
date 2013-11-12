@@ -8,7 +8,7 @@ use Illuminate\Database\Schema\Blueprint;
  * `network` table migration
  * --------------------------------------------------------------------------
  *
- * @package  Carbontwelve\Bloggy
+ * @package  Carbontwelve\BloggyKernel
  * @category Migration
  * @since    0.0.2
  * @author   Simon Dann <simon@photogabble.co.uk>

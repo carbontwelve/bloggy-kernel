@@ -11,7 +11,7 @@ use Illuminate\Database\Schema\Blueprint;
  * Inspired by the following post on stackoverflow plus wordpress's taxonomy
  * system: http://stackoverflow.com/a/4241084/1225977
  *
- * @package  Carbontwelve\Bloggy
+ * @package  Carbontwelve\BloggyKernel
  * @category Migration
  * @since    0.0.2
  * @author   Simon Dann <simon@photogabble.co.uk>
