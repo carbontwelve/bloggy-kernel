@@ -6,14 +6,14 @@ use Carbontwelve\BloggyKernel\Models\Classification\Taxons\Eloquent\TaxonsProvid
 use Carbontwelve\BloggyKernel\Models\Classification\TaxonRelationship\Eloquent\TaxonRelationshipProvider as ClassificationTaxonRelationshipProvider;
 
 /**
- * Class BloggyServiceProvider
+ * Class BloggyKernelServiceProvider
  *
  * @package Carbontwelve\BloggyKernel
  * @category ServiceProvider
  * @since    0.0.1
  * @author   Simon Dann <simon@photogabble.co.uk>
  */
-class BloggyServiceProvider extends ServiceProvider {
+class BloggyKernelServiceProvider extends ServiceProvider {
 
 	/**
      * --------------------------------------------------------------------------
