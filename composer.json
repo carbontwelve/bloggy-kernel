@@ -13,7 +13,9 @@
     },
     "autoload": {
         "classmap": [
-            "src/Carbontwelve/BloggyKernel/models",
+            "src/Carbontwelve/BloggyKernel/models/classification/TaxonomicUnits/Eloquent/Exceptions.php",
+            "src/Carbontwelve/BloggyKernel/models/classification/TaxonRelationship/Eloquent/Exceptions.php",
+            "src/Carbontwelve/BloggyKernel/models/classification/Taxons/Eloquent/Exceptions.php",
             "src/migrations"
         ],
         "psr-0": {
