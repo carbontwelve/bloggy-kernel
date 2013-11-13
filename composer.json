@@ -12,6 +12,10 @@
         "illuminate/support": "4.0.x"
     },
     "autoload": {
+        "classmap": [
+            "src/Carbontwelve/BloggyKernel/models",
+            "src/migrations"
+        ],
         "psr-0": {
             "Carbontwelve\\BloggyKernel": "src/"
         }
