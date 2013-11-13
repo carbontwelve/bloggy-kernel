@@ -15,7 +15,7 @@ class BloggyAdminBaseController extends \Carbontwelve\Admin\Controllers\Backend\
     public function __construct()
     {
 
-        $this->setPackage('Bloggy');
+        $this->setPackage('BloggyKernel');
         parent::__construct();
 
     }

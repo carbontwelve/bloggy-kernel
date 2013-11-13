@@ -33,8 +33,12 @@ class TaxonomicUnitAdminController extends BloggyAdminBaseController
 
     public function index()
     {
-        $taxonomyUnits = Classification::getTaxonomicUnitsProvider()
-            ->findAll();
+        $f = Classification::getTaxonomicUnitsProvider();
+
+        //$taxonomyUnits = Classification::getTaxonomicUnitsProvider()
+        //    ->findAll();
+
+        $taxonomyUnits = array();
 
         return $this->adminView( 'taxonomy.units.index', array(
                 'taxonomyUnits' => $taxonomyUnits
